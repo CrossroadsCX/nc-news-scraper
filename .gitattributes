@@ -1,3 +1,4 @@
+.yarn/unplugged/puppeteer-npm-15.1.1-12aa142bee/node_modules/puppeteer/.local-chromium/mac-1011831/chrome-mac/Chromium.app/Contents/Frameworks/Chromium[[:space:]]Framework.framework/Versions/104.0.5109.0/Chromium[[:space:]]Framework filter=lfs diff=lfs merge=lfs -text
 /.yarn/releases/yarn-berry.cjs filter=lfs diff=lfs merge=lfs -text
 /.pnp.cjs filter=lfs diff=lfs merge=lfs -text
 /.yarn/cache/@types-node-npm-18.0.0-c8497066c5-aab2b32572.zip filter=lfs diff=lfs merge=lfs -text
