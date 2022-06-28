@@ -5,12 +5,17 @@ import { scraper as triangleBusinessJournalScraper } from '../siteScrapers/trian
 import { scraper as ncPolicyWatchScraper } from '../siteScrapers/ncPolicyWatch.js'
 
 export const newsScraper = async () => {
-  // const newsAndObserverLinks = await newsAndObserverScraper()
-  // const carolinaJournalLinks = await carolinaJournalScraper()
-  // const businessNCLinks = await businessNCScraper()
-  // const triangleBusinessJournalLinks = await triangleBusinessJournalScraper()
+  const businessNCLinks = await businessNCScraper()
+  const carolinaJournalLinks = await carolinaJournalScraper()
+  const newsAndObserverLinks = await newsAndObserverScraper()
   const ncPolicyWatchLinks = await ncPolicyWatchScraper()
+  const triangleBusinessJournalLinks = await triangleBusinessJournalScraper()
 
-  // return { businessNCLinks, carolinaJournalLinks, triangleBusinessJournalLinks, newsAndObserverLinks }
-  return { ncPolicyWatchLinks }
+  return {
+    businessNCLinks,
+    carolinaJournalLinks,
+    ncPolicyWatchLinks,
+    newsAndObserverLinks,
+    triangleBusinessJournalLinks,
+  }
 }
