@@ -127,3 +127,14 @@
 /.yarn/cache/diff-npm-5.1.0-d24d222280-c7bf0df7c9.zip filter=lfs diff=lfs merge=lfs -text
 /.yarn/cache/lodash-npm-4.17.21-6382451519-eb835a2e51.zip filter=lfs diff=lfs merge=lfs -text
 /.yarn/cache/ts-node-npm-10.8.1-24280b0982-7d1aa7aa3a.zip filter=lfs diff=lfs merge=lfs -text
+/.yarn/cache/@types-lodash-npm-4.14.182-1073aac722-7dd137aa9d.zip filter=lfs diff=lfs merge=lfs -text
+/.yarn/cache/axios-npm-0.27.2-dbe3a48aea-38cb754046.zip filter=lfs diff=lfs merge=lfs -text
+/.yarn/cache/iconv-lite-npm-0.6.3-24b8aae27e-3f60d47a5c.zip filter=lfs diff=lfs merge=lfs -text
+/.yarn/cache/node-gyp-npm-9.0.0-0eccfca4d1-4d8ef8860f.zip filter=lfs diff=lfs merge=lfs -text
+/.yarn/unplugged/fsevents-patch-3340e2eb10/node_modules/fsevents/fsevents.node filter=lfs diff=lfs merge=lfs -text
+/.yarn/unplugged/node-gyp-npm-9.0.0-0eccfca4d1/node_modules/node-gyp/gyp/pylib/gyp/generator/make.py filter=lfs diff=lfs merge=lfs -text
+/.yarn/unplugged/node-gyp-npm-9.0.0-0eccfca4d1/node_modules/node-gyp/gyp/pylib/gyp/generator/msvs.py filter=lfs diff=lfs merge=lfs -text
+/.yarn/unplugged/node-gyp-npm-9.0.0-0eccfca4d1/node_modules/node-gyp/gyp/pylib/gyp/generator/ninja.py filter=lfs diff=lfs merge=lfs -text
+/.yarn/unplugged/node-gyp-npm-9.0.0-0eccfca4d1/node_modules/node-gyp/gyp/pylib/gyp/input.py filter=lfs diff=lfs merge=lfs -text
+/.yarn/unplugged/node-gyp-npm-9.0.0-0eccfca4d1/node_modules/node-gyp/gyp/pylib/gyp/xcodeproj_file.py filter=lfs diff=lfs merge=lfs -text
+/.yarn/unplugged/node-gyp-npm-9.0.0-0eccfca4d1/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp.fontified filter=lfs diff=lfs merge=lfs -text
