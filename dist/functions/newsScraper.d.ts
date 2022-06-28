@@ -2,5 +2,5 @@ export declare const newsScraper: () => Promise<{
     ncPolicyWatchLinks: {
         title: string;
         link: string;
-    }[] | undefined;
+    }[] | null;
 }>;

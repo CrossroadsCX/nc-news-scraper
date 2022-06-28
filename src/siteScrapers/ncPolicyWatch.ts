@@ -31,4 +31,7 @@ export const scraper = async () => {
   } else {
     console.error(`Unable to get ${ncPolicyWatchUrl} news articles.`)
   }
+
+  await browser.close()
+  return null
 }
