@@ -1,6 +1,3 @@
-.yarn/unplugged/puppeteer-npm-15.1.1-12aa142bee/node_modules/puppeteer/.local-chromium/mac-1011831/chrome-mac/Chromium.app/Contents/Frameworks/Chromium[[:space:]]Framework.framework/Versions/104.0.5109.0/Chromium[[:space:]]Framework filter=lfs diff=lfs merge=lfs -text
-.yarn/unplugged/core-js-pure-npm-3.23.3-e00f2fa9ac filter=lfs diff=lfs merge=lfs -text
-.yarn/unplugged/puppeteer-npm-15.1.1-12aa142bee filter=lfs diff=lfs merge=lfs -text
 /.yarn/releases/yarn-berry.cjs filter=lfs diff=lfs merge=lfs -text
 /.pnp.cjs filter=lfs diff=lfs merge=lfs -text
 /.yarn/cache/@types-node-npm-18.0.0-c8497066c5-aab2b32572.zip filter=lfs diff=lfs merge=lfs -text
@@ -12,7 +9,6 @@
 /.yarn/cache/puppeteer-npm-15.1.1-12aa142bee-4e892f94f5.zip filter=lfs diff=lfs merge=lfs -text
 /.yarn/cache/uri-js-npm-4.4.1-66d11cbcaf-7167432de6.zip filter=lfs diff=lfs merge=lfs -text
 /.yarn/install-state.gz filter=lfs diff=lfs merge=lfs -text
-/.yarn/unplugged/puppeteer-npm-15.1.1-12aa142bee/node_modules/puppeteer/.local-chromium/mac-1011831/chrome-mac/Chromium.app/Contents/Frameworks/Chromium[[:space:]]Framework.framework/Versions/104.0.5109.0/Chromium[[:space:]]Framework filter=lfs diff=lfs merge=lfs -text
 /.yarn/unplugged/puppeteer-npm-15.1.1-12aa142bee/node_modules/puppeteer/.local-chromium/mac-1011831/chrome-mac/Chromium.app/Contents/Frameworks/Chromium[[:space:]]Framework.framework/Versions/104.0.5109.0/Helpers/Chromium[[:space:]]Helper[[:space:]](Alerts).app/Contents/MacOS/Chromium[[:space:]]Helper[[:space:]](Alerts) filter=lfs diff=lfs merge=lfs -text
 /.yarn/unplugged/puppeteer-npm-15.1.1-12aa142bee/node_modules/puppeteer/.local-chromium/mac-1011831/chrome-mac/Chromium.app/Contents/Frameworks/Chromium[[:space:]]Framework.framework/Versions/104.0.5109.0/Helpers/Chromium[[:space:]]Helper[[:space:]](Alerts).app/Contents/Resources/app.icns filter=lfs diff=lfs merge=lfs -text
 /.yarn/unplugged/puppeteer-npm-15.1.1-12aa142bee/node_modules/puppeteer/.local-chromium/mac-1011831/chrome-mac/Chromium.app/Contents/Frameworks/Chromium[[:space:]]Framework.framework/Versions/104.0.5109.0/Helpers/Chromium[[:space:]]Helper[[:space:]](GPU).app/Contents/MacOS/Chromium[[:space:]]Helper[[:space:]](GPU) filter=lfs diff=lfs merge=lfs -text
@@ -118,8 +114,6 @@
 /.yarn/cache/typescript-npm-4.7.4-65aa6ffb42-5750181b1c.zip filter=lfs diff=lfs merge=lfs -text
 /.yarn/cache/typescript-patch-e8b9857d0c-9096d8f6c1.zip filter=lfs diff=lfs merge=lfs -text
 /yarn.lock filter=lfs diff=lfs merge=lfs -text
-.yarn/releases/yarn-berry.cjs !text !filter !merge !diff
-* !text !filter !merge !diff
 /.yarn/releases/yarn-3.2.1.cjs filter=lfs diff=lfs merge=lfs -text
 /.yarn/cache/@yarnpkg-core-npm-4.0.0-rc.10-b45015bb02-6dcf2fb552.zip filter=lfs diff=lfs merge=lfs -text
 /.yarn/cache/@yarnpkg-libzip-npm-3.0.0-rc.10-9f0a34e48d-bb574a067b.zip filter=lfs diff=lfs merge=lfs -text
