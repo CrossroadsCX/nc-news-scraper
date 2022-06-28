@@ -17,7 +17,6 @@ export const scraper = async () => {
             const id = await (await article.getProperty('id')).jsonValue();
             if (id.match(/(primary-content|secondary-story-[0-9])/g)) {
                 const tag = await article.$eval('.kicker-id', (tagLink) => tagLink.innerText);
-                console.log(tag);
                 if (tag.toUpperCase() === 'BUSINESS') {
                     const link = await article.$eval('h3 > a', (link) => link.getAttribute('href'));
                     const title = await article.$eval('h3 > a', (link) => link.innerText);

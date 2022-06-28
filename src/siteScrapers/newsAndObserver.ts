@@ -40,8 +40,6 @@ export const scraper = async () => {
         // Grab the tag name
         const tag: string = await article.$eval('.kicker-id', (tagLink) => tagLink.innerText)
 
-        console.log(tag)
-
         // Only select the articles tagged as business
         if (tag.toUpperCase() === 'BUSINESS') {
           // Grab the title
