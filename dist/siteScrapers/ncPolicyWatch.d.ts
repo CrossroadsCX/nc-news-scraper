@@ -1,1 +1,4 @@
-export declare const scraper: () => Promise<void>;
+export declare const scraper: () => Promise<{
+    title: string;
+    link: string;
+}[] | undefined>;
