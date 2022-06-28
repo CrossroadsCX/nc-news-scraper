@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "composite": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "importHelpers": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "target": "es2015",
+    "lib": ["es2015"],
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "module": "es2020",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "declaration": true,
+    "types": ["node"]
+  },
+  "include": ["src/**/*"]
+}
