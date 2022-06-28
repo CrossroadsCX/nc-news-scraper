@@ -3,12 +3,9 @@ import { scraper as carolinaJournalScraper } from '../siteScrapers/carolinaJourn
 import { scraper as businessNCScraper } from '../siteScrapers/businessNC.js'
 
 export const newsScraper = async () => {
-  // const newsAndObserverLinks = await newsAndObserverScraper()
-  // const carolinaJournalLinks = await carolinaJournalScraper()
-
-  // return { carolinaJournalLinks, newsAndObserverLinks }
-
+  const newsAndObserverLinks = await newsAndObserverScraper()
+  const carolinaJournalLinks = await carolinaJournalScraper()
   const businessNCLinks = await businessNCScraper()
 
-  return { businessNCLinks }
+  return { businessNCLinks, carolinaJournalLinks, newsAndObserverLinks }
 }
