@@ -121,3 +121,9 @@
 .yarn/releases/yarn-berry.cjs !text !filter !merge !diff
 * !text !filter !merge !diff
 /.yarn/releases/yarn-3.2.1.cjs filter=lfs diff=lfs merge=lfs -text
+/.yarn/cache/@yarnpkg-core-npm-4.0.0-rc.10-b45015bb02-6dcf2fb552.zip filter=lfs diff=lfs merge=lfs -text
+/.yarn/cache/@yarnpkg-libzip-npm-3.0.0-rc.10-9f0a34e48d-bb574a067b.zip filter=lfs diff=lfs merge=lfs -text
+/.yarn/cache/diff-npm-4.0.2-73133c7102-f2c09b0ce4.zip filter=lfs diff=lfs merge=lfs -text
+/.yarn/cache/diff-npm-5.1.0-d24d222280-c7bf0df7c9.zip filter=lfs diff=lfs merge=lfs -text
+/.yarn/cache/lodash-npm-4.17.21-6382451519-eb835a2e51.zip filter=lfs diff=lfs merge=lfs -text
+/.yarn/cache/ts-node-npm-10.8.1-24280b0982-7d1aa7aa3a.zip filter=lfs diff=lfs merge=lfs -text
