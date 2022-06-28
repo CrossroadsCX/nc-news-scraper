@@ -21,8 +21,6 @@ export const scraper = async () => {
 
   const listHandle = await page.$('.td-mc1-wrap')
 
-  console.log(listHandle)
-
   if (listHandle) {
     const articlesHandle = await listHandle.$$('div')
     const articlesPromises = articlesHandle.map(async (article): Promise<BusinessNCLink | null> => {
