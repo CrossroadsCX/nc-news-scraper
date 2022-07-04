@@ -1,17 +1,10 @@
 import puppeteer from 'puppeteer'
 
-export type NewsAndObserverLink = {
-  id: string
-  title: string
-  link: string
-  tag: string
-  dateText: string
-  dateTime: string
-}
+import type { Article } from '../types'
 
 const newsObserverUrl = 'https://www.newsobserver.com/news/business/'
 
-export const scraper = async () => {
+export const scraper = async (): Promise<Article[]> => {
   const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
   const page = await browser.newPage()
   page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:101.0) Gecko/20100101 Firefox/101.0')
@@ -30,7 +23,7 @@ export const scraper = async () => {
     const articlesHandle = await sectionHandle.$$('article')
 
 
-    const articlesPromises = articlesHandle.map(async (article): Promise<NewsAndObserverLink | null> => {
+    const articlesPromises = articlesHandle.map(async (article): Promise<Article | null> => {
 
       // Grab the article id
       const id: string = await (await article.getProperty('id')).jsonValue()
@@ -60,7 +53,7 @@ export const scraper = async () => {
     })
 
     const tagValues = await Promise.all(articlesPromises)
-    const filteredValues = tagValues.filter((tag) => tag)
+    const filteredValues = tagValues.filter((tag): tag is Article => tag !== null)
 
     await browser.close()
 
@@ -71,5 +64,5 @@ export const scraper = async () => {
 
   await browser.close()
 
-  return null
+  return []
 }

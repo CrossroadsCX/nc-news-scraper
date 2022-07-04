@@ -1,13 +1,10 @@
 import puppeteer from 'puppeteer'
 
+import type { Article } from '../types'
+
 const triangleBusinessJournalUrl = 'https://www.bizjournals.com/triangle/news/'
 
-export type TriangleBusinessJournalLink = {
-  link: string
-  title: string
-}
-
-export const scraper = async () => {
+export const scraper = async (): Promise<Article[]> => {
   const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
   const page = await browser.newPage()
   page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:101.0) Gecko/20100101 Firefox/101.0')
@@ -23,7 +20,7 @@ export const scraper = async () => {
 
   if (listHandle) {
     const articlesHandle = await listHandle.$$('a')
-    const articlesPromises = articlesHandle.map(async (article): Promise<TriangleBusinessJournalLink> => {
+    const articlesPromises = articlesHandle.map(async (article): Promise<Article> => {
       const link: string = await article.evaluate((el) => el.getAttribute('href'))
       const title: string = await article.$eval('.item__title', (el) => el.innerText)
 
@@ -43,5 +40,5 @@ export const scraper = async () => {
 
 
   await browser.close()
-  return null
+  return []
 }

@@ -1,8 +1,10 @@
 import puppeteer from 'puppeteer'
 
+import type { Article } from '../types'
+
 const ncPolicyWatchUrl = 'https://ncpolicywatch.com/category/articles/news/'
 
-export const scraper = async () => {
+export const scraper = async (): Promise<Article[]> => {
   const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
   const page = await browser.newPage()
   await page.goto(ncPolicyWatchUrl)
@@ -33,5 +35,5 @@ export const scraper = async () => {
   }
 
   await browser.close()
-  return null
+  return []
 }
