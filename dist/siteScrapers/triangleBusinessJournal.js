@@ -3,6 +3,7 @@ const triangleBusinessJournalUrl = 'https://www.bizjournals.com/triangle/news/';
 export const scraper = async () => {
     const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
     const page = await browser.newPage();
+    page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:101.0) Gecko/20100101 Firefox/101.0');
     await page.goto(triangleBusinessJournalUrl);
     await page.setViewport({
         width: 1200,

@@ -1,11 +1,11 @@
 export declare const newsScraper: () => Promise<{
     businessNCLinks: (import("../siteScrapers/businessNC.js").BusinessNCLink | null)[] | null;
-    carolinaJournalLinks: {
-        category: any;
+    carolinaJournalLinks: ({
+        category: string;
         description: any;
         link: any;
         title: any;
-    }[] | null;
+    } | null)[] | null;
     ncPolicyWatchLinks: {
         title: string;
         link: string;

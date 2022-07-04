@@ -1,5 +1,5 @@
 import puppeteer from 'puppeteer';
-const carolinaJournalUrl = 'https://www.carolinajournal.com/category/business/';
+const carolinaJournalUrl = 'https://www.carolinajournal.com/category/politics/';
 export const scraper = async () => {
     const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
     const page = await browser.newPage();
@@ -18,11 +18,15 @@ export const scraper = async () => {
             const title = await article.$eval('a > .details > h3', (el) => el.innerText);
             const category = await article.$eval('a > .details > .category', (el) => el.innerText);
             const description = await article.$eval('a > .details > p', (el) => el.innerText);
-            return { category, description, link, title };
+            if (category.toUpperCase() === 'NEWS') {
+                return { category, description, link, title };
+            }
+            return null;
         });
         const links = await Promise.all(articlesPromises);
+        const filteredLinks = links.filter((link) => link);
         await browser.close();
-        return links;
+        return filteredLinks;
     }
     else {
         console.error(`Unable to get ${carolinaJournalUrl} news articles.`);
