@@ -1,8 +1,10 @@
 import puppeteer from 'puppeteer'
 
+import type { Article } from '../types'
+
 const carolinaJournalUrl = 'https://www.carolinajournal.com/category/politics/'
 
-export const scraper = async () => {
+export const scraper = async (): Promise<Article[]> => {
   const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
   const page = await browser.newPage()
   page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:101.0) Gecko/20100101 Firefox/101.0')
@@ -19,7 +21,7 @@ export const scraper = async () => {
 
   if (listHandle) {
     const articlesHandle = await listHandle.$$('article')
-    const articlesPromises = articlesHandle.map(async (article) => {
+    const articlesPromises = articlesHandle.map(async (article): Promise<Article | null> => {
       const link = await article.$eval('a', (link) => link.getAttribute('href'))
       const title = await article.$eval('a > .details > h3', (el) => el.innerText)
       const category: string = await article.$eval('a > .details > .category', (el) => el.innerText)
@@ -33,7 +35,7 @@ export const scraper = async () => {
     })
 
     const links = await Promise.all(articlesPromises)
-    const filteredLinks = links.filter((link) => link)
+    const filteredLinks = links.filter((link): link is Article => link !== null)
 
     await browser.close()
     return filteredLinks
@@ -43,5 +45,5 @@ export const scraper = async () => {
 
   await browser.close()
 
-  return null
+  return []
 }
