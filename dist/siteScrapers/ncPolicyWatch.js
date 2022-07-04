@@ -25,6 +25,6 @@ export const scraper = async () => {
         console.error(`Unable to get ${ncPolicyWatchUrl} news articles.`);
     }
     await browser.close();
-    return null;
+    return [];
 };
 //# sourceMappingURL=ncPolicyWatch.js.map

@@ -28,6 +28,6 @@ export const scraper = async () => {
         console.error(`Unable to get ${businessNCUrl} news articles.`);
     }
     await browser.close();
-    return null;
+    return [];
 };
 //# sourceMappingURL=businessNC.js.map

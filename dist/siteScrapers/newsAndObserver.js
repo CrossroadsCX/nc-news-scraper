@@ -29,7 +29,7 @@ export const scraper = async () => {
             return null;
         });
         const tagValues = await Promise.all(articlesPromises);
-        const filteredValues = tagValues.filter((tag) => tag);
+        const filteredValues = tagValues.filter((tag) => tag !== null);
         await browser.close();
         return filteredValues;
     }
@@ -37,6 +37,6 @@ export const scraper = async () => {
         console.error(`Unable to get ${newsObserverUrl} news articles`);
     }
     await browser.close();
-    return null;
+    return [];
 };
 //# sourceMappingURL=newsAndObserver.js.map
