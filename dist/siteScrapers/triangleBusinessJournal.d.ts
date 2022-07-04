@@ -1,5 +1,2 @@
-export declare type TriangleBusinessJournalLink = {
-    link: string;
-    title: string;
-};
-export declare const scraper: () => Promise<TriangleBusinessJournalLink[] | null>;
+import type { Article } from '../types';
+export declare const scraper: () => Promise<Article[]>;

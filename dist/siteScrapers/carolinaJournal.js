@@ -24,7 +24,7 @@ export const scraper = async () => {
             return null;
         });
         const links = await Promise.all(articlesPromises);
-        const filteredLinks = links.filter((link) => link);
+        const filteredLinks = links.filter((link) => link !== null);
         await browser.close();
         return filteredLinks;
     }
@@ -32,6 +32,6 @@ export const scraper = async () => {
         console.error(`Unable to get ${carolinaJournalUrl} news articles.`);
     }
     await browser.close();
-    return null;
+    return [];
 };
 //# sourceMappingURL=carolinaJournal.js.map

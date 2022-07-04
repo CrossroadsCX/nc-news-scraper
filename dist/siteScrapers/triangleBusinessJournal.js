@@ -29,6 +29,6 @@ export const scraper = async () => {
         console.error(`Unable to get ${triangleBusinessJournalUrl} news articles.`);
     }
     await browser.close();
-    return null;
+    return [];
 };
 //# sourceMappingURL=triangleBusinessJournal.js.map

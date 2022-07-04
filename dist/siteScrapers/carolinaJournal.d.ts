@@ -1,6 +1,2 @@
-export declare const scraper: () => Promise<({
-    category: string;
-    description: any;
-    link: any;
-    title: any;
-} | null)[] | null>;
+import type { Article } from '../types';
+export declare const scraper: () => Promise<Article[]>;
