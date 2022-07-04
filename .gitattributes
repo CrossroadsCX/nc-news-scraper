@@ -132,3 +132,6 @@
 /.yarn/unplugged/node-gyp-npm-9.0.0-0eccfca4d1/node_modules/node-gyp/gyp/pylib/gyp/input.py filter=lfs diff=lfs merge=lfs -text
 /.yarn/unplugged/node-gyp-npm-9.0.0-0eccfca4d1/node_modules/node-gyp/gyp/pylib/gyp/xcodeproj_file.py filter=lfs diff=lfs merge=lfs -text
 /.yarn/unplugged/node-gyp-npm-9.0.0-0eccfca4d1/node_modules/node-gyp/gyp/tools/emacs/testdata/media.gyp.fontified filter=lfs diff=lfs merge=lfs -text
+/.yarn/cache/@sendinblue-client-npm-3.2.1-c43f3dea21-e99fd83bae.zip filter=lfs diff=lfs merge=lfs -text
+/.yarn/cache/bluebird-npm-3.7.2-6a54136ee3-869417503c.zip filter=lfs diff=lfs merge=lfs -text
+/.yarn/cache/psl-npm-1.8.0-226099d70e-6150048ed2.zip filter=lfs diff=lfs merge=lfs -text
