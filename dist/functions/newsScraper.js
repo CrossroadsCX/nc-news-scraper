@@ -10,12 +10,14 @@ export const newsScraper = async () => {
     const newsAndObserverLinks = await newsAndObserverScraper();
     const ncPolicyWatchLinks = await ncPolicyWatchScraper();
     const triangleBusinessJournalLinks = await triangleBusinessJournalScraper();
-    return sendEmail({
+    const articles = {
         businessNCLinks,
         carolinaJournalLinks,
         ncPolicyWatchLinks,
         newsAndObserverLinks,
         triangleBusinessJournalLinks,
-    });
+    };
+    console.log(articles);
+    return sendEmail(articles);
 };
 //# sourceMappingURL=newsScraper.js.map
