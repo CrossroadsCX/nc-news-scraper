@@ -6,12 +6,14 @@ import { scraper as ncPolicyWatchScraper } from '../siteScrapers/ncPolicyWatch.j
 
 import { sendEmail } from '../sendinblue/sendEmail.js'
 
+const numLinks = 3
+
 export const newsScraper = async () => {
-  const businessNCLinks = await businessNCScraper()
-  const carolinaJournalLinks = await carolinaJournalScraper()
-  const newsAndObserverLinks = await newsAndObserverScraper()
-  const ncPolicyWatchLinks = await ncPolicyWatchScraper()
-  const triangleBusinessJournalLinks = await triangleBusinessJournalScraper()
+  const businessNCLinks = (await businessNCScraper()).slice(0, numLinks)
+  const carolinaJournalLinks = (await carolinaJournalScraper()).slice(0, numLinks)
+  const newsAndObserverLinks = (await newsAndObserverScraper()).slice(0, numLinks)
+  const ncPolicyWatchLinks = (await ncPolicyWatchScraper()).slice(0, numLinks)
+  const triangleBusinessJournalLinks = (await triangleBusinessJournalScraper()).slice(0, numLinks)
 
   const articles = {
     businessNCLinks,
@@ -20,8 +22,6 @@ export const newsScraper = async () => {
     newsAndObserverLinks,
     triangleBusinessJournalLinks,
   }
-
-  console.log(articles)
 
   return sendEmail(articles)
 }

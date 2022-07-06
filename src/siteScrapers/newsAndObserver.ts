@@ -2,7 +2,7 @@ import puppeteer from 'puppeteer'
 
 import type { Article } from '../types'
 
-const newsObserverUrl = 'https://www.newsobserver.com/news/business/'
+const newsObserverUrl = 'https://www.newsobserver.com/news/politics-government/politics-columns-blogs/under-the-dome/'
 
 export const scraper = async (): Promise<Article[]> => {
   const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
@@ -31,20 +31,20 @@ export const scraper = async (): Promise<Article[]> => {
       // Filter out non-article content ( eg. ads )
       if (id.match(/(primary-content|secondary-story-[0-9])/g)) {
         // Grab the tag name
-        const tag: string = await article.$eval('.kicker-id', (tagLink) => tagLink.innerText)
+        // const tag: string = await article.$eval('.kicker-id', (tagLink) => tagLink.innerText)
 
         // Only select the articles tagged as business
-        if (tag.toUpperCase() === 'BUSINESS') {
+        // if (tag.toUpperCase() === 'BUSINESS') {
           // Grab the title
           const link: string = await article.$eval('h3 > a', (link) => link.getAttribute('href'))
           const title: string = await article.$eval('h3 > a', (link) => link.innerText)
 
           // Grab the date information
-          const dateText: string = await article.$eval('.time', (dateHandle) => dateHandle.innerText)
-          const dateTime: string = await article.$eval('.time', (dateHandle) => dateHandle.getAttribute('datetime'))
+          // const dateText: string = await article.$eval('.time', (dateHandle) => dateHandle.innerText)
+          // const dateTime: string = await article.$eval('.time', (dateHandle) => dateHandle.getAttribute('datetime'))
 
-          return { id, title, link, tag, dateText, dateTime }
-        }
+          return { id, title, link, /* tag, dateText, dateTime*/ }
+        // }
 
         return null
       }

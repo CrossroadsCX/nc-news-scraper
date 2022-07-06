@@ -1,5 +1,5 @@
 import puppeteer from 'puppeteer';
-const newsObserverUrl = 'https://www.newsobserver.com/news/business/';
+const newsObserverUrl = 'https://www.newsobserver.com/news/politics-government/politics-columns-blogs/under-the-dome/';
 export const scraper = async () => {
     const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
     const page = await browser.newPage();
@@ -16,14 +16,9 @@ export const scraper = async () => {
         const articlesPromises = articlesHandle.map(async (article) => {
             const id = await (await article.getProperty('id')).jsonValue();
             if (id.match(/(primary-content|secondary-story-[0-9])/g)) {
-                const tag = await article.$eval('.kicker-id', (tagLink) => tagLink.innerText);
-                if (tag.toUpperCase() === 'BUSINESS') {
-                    const link = await article.$eval('h3 > a', (link) => link.getAttribute('href'));
-                    const title = await article.$eval('h3 > a', (link) => link.innerText);
-                    const dateText = await article.$eval('.time', (dateHandle) => dateHandle.innerText);
-                    const dateTime = await article.$eval('.time', (dateHandle) => dateHandle.getAttribute('datetime'));
-                    return { id, title, link, tag, dateText, dateTime };
-                }
+                const link = await article.$eval('h3 > a', (link) => link.getAttribute('href'));
+                const title = await article.$eval('h3 > a', (link) => link.innerText);
+                return { id, title, link, };
                 return null;
             }
             return null;
