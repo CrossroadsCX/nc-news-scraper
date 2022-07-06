@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer';
 const triangleBusinessJournalUrl = 'https://www.bizjournals.com/triangle/news/';
+const baseUrl = 'https://www.bizjournals.com/';
 export const scraper = async () => {
     const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
     const page = await browser.newPage();
@@ -14,7 +15,7 @@ export const scraper = async () => {
     if (listHandle) {
         const articlesHandle = await listHandle.$$('a');
         const articlesPromises = articlesHandle.map(async (article) => {
-            const link = await article.evaluate((el) => el.getAttribute('href'));
+            const link = `${baseUrl}${(await article.evaluate((el) => el.getAttribute('href')))}`;
             const title = await article.$eval('.item__title', (el) => el.innerText);
             return {
                 link,

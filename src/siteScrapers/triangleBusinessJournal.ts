@@ -3,6 +3,7 @@ import puppeteer from 'puppeteer'
 import type { Article } from '../types'
 
 const triangleBusinessJournalUrl = 'https://www.bizjournals.com/triangle/news/'
+const baseUrl = 'https://www.bizjournals.com/'
 
 export const scraper = async (): Promise<Article[]> => {
   const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
@@ -21,7 +22,7 @@ export const scraper = async (): Promise<Article[]> => {
   if (listHandle) {
     const articlesHandle = await listHandle.$$('a')
     const articlesPromises = articlesHandle.map(async (article): Promise<Article> => {
-      const link: string = await article.evaluate((el) => el.getAttribute('href'))
+      const link: string = `${baseUrl}${(await article.evaluate((el) => el.getAttribute('href')))}`
       const title: string = await article.$eval('.item__title', (el) => el.innerText)
 
       return {
