@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "@crossroadscx/eslint-config": "^0.0.8",
+    "@google-cloud/datastore": "^7.0.0",
     "@google-cloud/functions-framework": "^3.1.2",
+    "@google-cloud/secret-manager": "^4.0.0",
     "@sendinblue/client": "^3.2.1",
     "@types/puppeteer": "^5.4.6",
     "axios": "^0.27.2",
