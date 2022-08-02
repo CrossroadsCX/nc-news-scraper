@@ -25,10 +25,10 @@ export const scraper = async (): Promise<Article[]> => {
       const link = await article.$eval('a', (link) => link.getAttribute('href'))
       const title = await article.$eval('a > .details > h3', (el) => el.innerText)
       const category: string = await article.$eval('a > .details > .category', (el) => el.innerText)
-      const description = await article.$eval('a > .details > p', (el) => el.innerText)
+      // const description = await article.$eval('a > .details > p', (el) => el.innerText)
 
       if (category.toUpperCase() === 'OPINION') {
-        return { category, description, link, title }
+        return { category,/*, description,*/ link, title }
       }
 
       return null

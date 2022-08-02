@@ -3,6 +3,7 @@ import { scraper as carolinaJournalScraper } from '../siteScrapers/carolinaJourn
 import { scraper as businessNCScraper } from '../siteScrapers/businessNC.js';
 import { scraper as triangleBusinessJournalScraper } from '../siteScrapers/triangleBusinessJournal.js';
 import { scraper as ncPolicyWatchScraper } from '../siteScrapers/ncPolicyWatch.js';
+import { scraper as politicsNCScraper } from '../siteScrapers/politicsNC.js';
 import { sendEmail } from '../sendinblue/sendEmail.js';
 const numLinks = 3;
 export const newsScraper = async () => {
@@ -10,12 +11,14 @@ export const newsScraper = async () => {
     const carolinaJournalLinks = (await carolinaJournalScraper()).slice(0, numLinks);
     const newsAndObserverLinks = (await newsAndObserverScraper()).slice(0, numLinks);
     const ncPolicyWatchLinks = (await ncPolicyWatchScraper()).slice(0, numLinks);
+    const politicsNCLinks = (await politicsNCScraper()).slice(0, numLinks);
     const triangleBusinessJournalLinks = (await triangleBusinessJournalScraper()).slice(0, numLinks);
     const articles = {
         businessNCLinks,
         carolinaJournalLinks,
         ncPolicyWatchLinks,
         newsAndObserverLinks,
+        politicsNCLinks,
         triangleBusinessJournalLinks,
     };
     return sendEmail(articles);
