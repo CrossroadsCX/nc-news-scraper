@@ -1,19 +1,22 @@
 import SIBApi, { AttributesApi, SendSmtpEmailTo } from '@sendinblue/client'
 
+import { getEmails } from '../gcloud/datastore.js'
 import { getSecret } from '../gcloud/secrets.js'
 
 import type { ArticleList } from '../types'
 
 const templateId = 2
-const testEmail = ['chris@crossroadscx.com']
+// const testEmail = ['chris@crossroadscx.com']
 
 export const sendEmail = async (articles: ArticleList) => {
+  const emails = await getEmails()
+
   const APIKey = await getSecret('SIB_API_KEY', 'ncfree')
 
   const api = new SIBApi.TransactionalEmailsApi()
   api.setApiKey(SIBApi.TransactionalEmailsApiApiKeys.apiKey, APIKey)
 
-  const bccEmails = testEmail.map((email) => {
+  const bccEmails = emails.map((email) => {
     const bccEmail = new SIBApi.SendSmtpEmailBcc()
     bccEmail.email = email
 
