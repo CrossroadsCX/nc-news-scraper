@@ -2,7 +2,7 @@ import puppeteer from 'puppeteer'
 
 import type { Article } from '../types'
 
-const carolinaJournalUrl = 'https://www.carolinajournal.com/category/politics/'
+const carolinaJournalUrl = 'https://www.carolinajournal.com/opinion/'
 
 export const scraper = async (): Promise<Article[]> => {
   const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
@@ -25,10 +25,10 @@ export const scraper = async (): Promise<Article[]> => {
       const link = await article.$eval('a', (link) => link.getAttribute('href'))
       const title = await article.$eval('a > .details > h3', (el) => el.innerText)
       const category: string = await article.$eval('a > .details > .category', (el) => el.innerText)
-      const description = await article.$eval('a > .details > p', (el) => el.innerText)
+      // const description = await article.$eval('a > .details > p', (el) => el.innerText)
 
-      if (category.toUpperCase() === 'NEWS') {
-        return { category, description, link, title }
+      if (category.toUpperCase() === 'OPINION') {
+        return { category,/*, description,*/ link, title }
       }
 
       return null
