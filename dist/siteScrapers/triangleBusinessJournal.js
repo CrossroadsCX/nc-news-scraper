@@ -34,6 +34,7 @@ export const scraper = async () => {
         return [];
     }
     catch (err) {
+        console.error(`Error getting ${triangleBusinessJournalUrl} news articles.`);
         console.error(err);
         return [];
     }

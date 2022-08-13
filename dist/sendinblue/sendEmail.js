@@ -3,23 +3,31 @@ import { getEmails } from '../gcloud/datastore.js';
 import { getSecret } from '../gcloud/secrets.js';
 const templateId = 2;
 export const sendEmail = async (articles) => {
-    const emails = await getEmails();
-    const APIKey = await getSecret('SIB_API_KEY', 'ncfree');
-    const api = new SIBApi.TransactionalEmailsApi();
-    api.setApiKey(SIBApi.TransactionalEmailsApiApiKeys.apiKey, APIKey);
-    const bccEmails = emails.map((email) => {
-        const bccEmail = new SIBApi.SendSmtpEmailBcc();
-        bccEmail.email = email;
-        return bccEmail;
-    });
-    const toEmail = new SIBApi.SendSmtpEmailTo();
-    toEmail.email = 'info@ncfree.org';
-    const sendInfo = new SIBApi.SendSmtpEmail();
-    sendInfo.to = [toEmail];
-    sendInfo.bcc = bccEmails;
-    sendInfo.params = { articles };
-    sendInfo.templateId = templateId;
-    const { response, body } = await api.sendTransacEmail(sendInfo);
-    return { body, statusCode: response.statusCode };
+    try {
+        const emails = await getEmails();
+        const APIKey = await getSecret('SIB_API_KEY', 'ncfree');
+        const api = new SIBApi.TransactionalEmailsApi();
+        api.setApiKey(SIBApi.TransactionalEmailsApiApiKeys.apiKey, APIKey);
+        const bccEmails = emails.map((email) => {
+            const bccEmail = new SIBApi.SendSmtpEmailBcc();
+            bccEmail.email = email;
+            return bccEmail;
+        });
+        console.log(bccEmails);
+        const toEmail = new SIBApi.SendSmtpEmailTo();
+        toEmail.email = 'info@ncfree.org';
+        const sendInfo = new SIBApi.SendSmtpEmail();
+        sendInfo.to = [toEmail];
+        sendInfo.bcc = bccEmails;
+        sendInfo.params = { articles };
+        sendInfo.templateId = templateId;
+        const { response, body } = await api.sendTransacEmail(sendInfo);
+        return { body, statusCode: response.statusCode };
+    }
+    catch (err) {
+        console.error(`Error sending email.`);
+        console.error(err);
+        return { body: err, statusCode: 500 };
+    }
 };
 //# sourceMappingURL=sendEmail.js.map

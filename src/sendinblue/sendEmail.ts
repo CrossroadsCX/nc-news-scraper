@@ -9,30 +9,39 @@ const templateId = 2
 // const testEmail = ['chris@crossroadscx.com']
 
 export const sendEmail = async (articles: ArticleList) => {
-  const emails = await getEmails()
+  try {
+    const emails = await getEmails()
 
-  const APIKey = await getSecret('SIB_API_KEY', 'ncfree')
+    const APIKey = await getSecret('SIB_API_KEY', 'ncfree')
 
-  const api = new SIBApi.TransactionalEmailsApi()
-  api.setApiKey(SIBApi.TransactionalEmailsApiApiKeys.apiKey, APIKey)
+    const api = new SIBApi.TransactionalEmailsApi()
+    api.setApiKey(SIBApi.TransactionalEmailsApiApiKeys.apiKey, APIKey)
 
-  const bccEmails = emails.map((email) => {
-    const bccEmail = new SIBApi.SendSmtpEmailBcc()
-    bccEmail.email = email
+    const bccEmails = emails.map((email) => {
+      const bccEmail = new SIBApi.SendSmtpEmailBcc()
+      bccEmail.email = email
 
-    return bccEmail
-  })
+      return bccEmail
+    })
 
-  const toEmail = new SIBApi.SendSmtpEmailTo()
-  toEmail.email = 'info@ncfree.org'
+    console.log(bccEmails)
 
-  const sendInfo = new SIBApi.SendSmtpEmail()
-  sendInfo.to = [toEmail]
-  sendInfo.bcc = bccEmails
-  sendInfo.params = { articles }
-  sendInfo.templateId = templateId
+    const toEmail = new SIBApi.SendSmtpEmailTo()
+    toEmail.email = 'info@ncfree.org'
 
-  const { response, body } = await api.sendTransacEmail(sendInfo)
+    const sendInfo = new SIBApi.SendSmtpEmail()
+    sendInfo.to = [toEmail]
+    sendInfo.bcc = bccEmails
+    sendInfo.params = { articles }
+    sendInfo.templateId = templateId
 
-  return { body, statusCode: response.statusCode }
+    const { response, body } = await api.sendTransacEmail(sendInfo)
+
+    return { body, statusCode: response.statusCode }
+  } catch (err) {
+    console.error(`Error sending email.`)
+    console.error(err)
+    return { body: err, statusCode: 500 }
+  }
+
 }
