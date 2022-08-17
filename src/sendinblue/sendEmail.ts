@@ -6,7 +6,6 @@ import { getSecret } from '../gcloud/secrets.js'
 import type { ArticleList } from '../types'
 
 const templateId = 2
-// const testEmail = ['chris@crossroadscx.com']
 
 export const sendEmail = async (articles: ArticleList) => {
   const emails = await getEmails()
