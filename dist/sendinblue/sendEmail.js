@@ -12,6 +12,8 @@ export const sendEmail = async (articles) => {
         bccEmail.email = email;
         return bccEmail;
     });
+    console.log('BCC Email Count:');
+    console.log(bccEmails.length);
     const toEmail = new SIBApi.SendSmtpEmailTo();
     toEmail.email = 'info@ncfree.org';
     const sendInfo = new SIBApi.SendSmtpEmail();

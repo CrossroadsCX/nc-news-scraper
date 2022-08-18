@@ -40,10 +40,10 @@ export const scraper = async (): Promise<Article[]> => {
       console.error(`Unable to get ${triangleBusinessJournalUrl} news articles.`)
     }
 
-
     await browser.close()
     return []
   } catch (err) {
+    console.error(`Error getting ${triangleBusinessJournalUrl} news articles.`)
     console.error(err)
     return []
   }
