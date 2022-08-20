@@ -37,7 +37,7 @@
     "@yarnpkg/pnpify": "^4.0.0-rc.10",
     "nodemon": "^2.0.18",
     "rimraf": "^3.0.2",
-    "ts-node": "^10.8.1",
+    "ts-node": "^10.9.1",
     "tslib": "^2.4.0"
   }
 }
