@@ -5,7 +5,8 @@ import { scraper as triangleBusinessJournalScraper } from '../siteScrapers/trian
 import { scraper as ncPolicyWatchScraper } from '../siteScrapers/ncPolicyWatch.js'
 import { scraper as politicsNCScraper } from '../siteScrapers/politicsNC.js'
 
-import { sendEmail } from '../sendinblue/sendEmail.js'
+// import { sendEmail } from '../sendinblue/sendEmail.js'
+import { createCampaign } from '../sendinblue/createCampaign.js'
 
 const numLinks = 3
 
@@ -26,5 +27,6 @@ export const newsScraper = async () => {
     triangleBusinessJournalLinks,
   }
 
-  return sendEmail(articles)
+  // return sendEmail(articles)
+  return createCampaign(articles)
 }
