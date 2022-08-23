@@ -5,7 +5,7 @@ import { getSecret } from '../gcloud/secrets.js'
 import type { ArticleList } from '../types'
 
 const templateId = 2
-const listId = 3
+const listId = 4
 
 export const createCampaign = async (articles: ArticleList) => {
   const APIKey = await getSecret('SIB_API_KEY', 'ncfree')
