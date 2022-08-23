@@ -1,7 +1,7 @@
 import SIBApi from '@sendinblue/client';
 import { getSecret } from '../gcloud/secrets.js';
 const templateId = 2;
-const listId = 3;
+const listId = 4;
 export const createCampaign = async (articles) => {
     const APIKey = await getSecret('SIB_API_KEY', 'ncfree');
     const api = new SIBApi.EmailCampaignsApi();
