@@ -1,4 +1,5 @@
+/// <reference types="node" />
 export declare const newsScraper: () => Promise<{
-    body: import("@sendinblue/client").CreateSmtpEmail;
-    statusCode: number | undefined;
+    response: import("http").IncomingMessage;
+    body?: any;
 }>;
