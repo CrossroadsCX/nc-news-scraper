@@ -5,7 +5,7 @@ export declare type Article = {
     category?: string;
     tag?: string;
     dateText?: string;
-    dateTime?: string;
+    dateTime: string;
     id?: string;
 };
 export declare type ArticleList = {

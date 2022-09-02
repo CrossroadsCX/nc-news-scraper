@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer';
 import _ from 'lodash';
+import { sortByDate } from '../helpers/dates.js';
 const businessNCUrl = 'https://businessnc.com/exclusive-web-content/';
 export const scraper = async () => {
     try {
@@ -18,12 +19,21 @@ export const scraper = async () => {
                 const infoHandle = await article.$('.td-module-meta-info');
                 const link = await infoHandle?.$eval('a', (link) => link.getAttribute('href'));
                 const title = await infoHandle?.$eval('a', (link) => link.innerText);
-                return { link, title };
+                let dateTime = '0';
+                try {
+                    const dateString = await article.$eval('time', (dateHandle) => dateHandle.getAttribute('datetime'));
+                    dateTime = new Date(dateString).getTime().toString();
+                }
+                catch (err) {
+                    console.info(`Unable to get dateTime for ${title}`);
+                }
+                return { link, title, dateTime };
             });
             const links = await Promise.all(articlesPromises);
             const filteredLinks = _.uniqBy(links.filter((link) => link?.link), 'link');
             await browser.close();
-            return filteredLinks;
+            const sortedLinks = sortByDate(filteredLinks);
+            return sortedLinks;
         }
         else {
             console.error(`Unable to get ${businessNCUrl} news articles.`);

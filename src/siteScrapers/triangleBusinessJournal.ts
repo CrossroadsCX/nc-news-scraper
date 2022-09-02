@@ -29,6 +29,7 @@ export const scraper = async (): Promise<Article[]> => {
         return {
           link,
           title,
+          dateTime: '0',
         }
       })
 

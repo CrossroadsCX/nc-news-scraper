@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer';
+import { sortByDate } from '../helpers/dates.js';
 const newsObserverUrl = 'https://www.newsobserver.com/news/politics-government/politics-columns-blogs/under-the-dome/';
 export const scraper = async () => {
     try {
@@ -19,7 +20,14 @@ export const scraper = async () => {
                 if (id.match(/(primary-content|secondary-story-[0-9])/g)) {
                     const link = await article.$eval('h3 > a', (link) => link.getAttribute('href'));
                     const title = await article.$eval('h3 > a', (link) => link.innerText);
-                    return { id, title, link, };
+                    let dateTime = '0';
+                    try {
+                        dateTime = await article.$eval('.time', (dateHandle) => dateHandle.getAttribute('datetime'));
+                    }
+                    catch (err) {
+                        console.info('Unable to get dateTime for article', title);
+                    }
+                    return { id, title, link, dateTime };
                     return null;
                 }
                 return null;
@@ -27,7 +35,8 @@ export const scraper = async () => {
             const tagValues = await Promise.all(articlesPromises);
             const filteredValues = tagValues.filter((tag) => tag !== null);
             await browser.close();
-            return filteredValues;
+            const sortedLinks = sortByDate(filteredValues);
+            return sortedLinks;
         }
         else {
             console.error(`Unable to get ${newsObserverUrl} news articles`);

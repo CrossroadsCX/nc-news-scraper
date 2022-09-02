@@ -4,7 +4,6 @@ import { scraper as businessNCScraper } from '../siteScrapers/businessNC.js';
 import { scraper as triangleBusinessJournalScraper } from '../siteScrapers/triangleBusinessJournal.js';
 import { scraper as ncPolicyWatchScraper } from '../siteScrapers/ncPolicyWatch.js';
 import { scraper as politicsNCScraper } from '../siteScrapers/politicsNC.js';
-import { createCampaign } from '../sendinblue/createCampaign.js';
 const numLinks = 3;
 export const newsScraper = async () => {
     const businessNCLinks = (await businessNCScraper()).slice(0, numLinks);
@@ -21,6 +20,6 @@ export const newsScraper = async () => {
         politicsNCLinks,
         triangleBusinessJournalLinks,
     };
-    return createCampaign(articles);
+    return articles;
 };
 //# sourceMappingURL=newsScraper.js.map
