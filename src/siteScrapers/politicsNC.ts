@@ -26,7 +26,7 @@ export const scraper = async (): Promise<Article[]> => {
         const link = await article.$eval('h2.entry-title > a', (link) => link.getAttribute('href'))
         const title = await article.$eval('h2.entry-title', (el) => el.innerText)
 
-        return { link, title }
+        return { link, title, dateTime: '0' }
       })
 
       const links = await Promise.all(articlesPromises)

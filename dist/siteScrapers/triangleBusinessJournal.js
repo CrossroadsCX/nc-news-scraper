@@ -21,6 +21,7 @@ export const scraper = async () => {
                 return {
                     link,
                     title,
+                    dateTime: '0',
                 };
             });
             const links = await Promise.all(articlesPromises);
