@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer';
+import { sortByDate } from '../helpers/dates.js';
 const triangleBusinessJournalUrl = 'https://www.bizjournals.com/triangle/news/';
 const baseUrl = 'https://www.bizjournals.com/';
 export const scraper = async () => {
@@ -18,15 +19,24 @@ export const scraper = async () => {
             const articlesPromises = articlesHandle.map(async (article) => {
                 const link = `${baseUrl}${(await article.evaluate((el) => el.getAttribute('href')))}`;
                 const title = await article.$eval('.item__title', (el) => el.innerText);
+                let dateTime = '0';
+                try {
+                    const dateText = await article.$eval('time', (el) => el.innerText);
+                    dateTime = new Date(dateText).getTime().toString();
+                }
+                catch (err) {
+                    console.info(`Unable to get dateTime for ${title}`);
+                }
                 return {
                     link,
                     title,
-                    dateTime: '0',
+                    dateTime,
                 };
             });
             const links = await Promise.all(articlesPromises);
+            const sortedLinks = sortByDate(links);
             await browser.close();
-            return links;
+            return sortedLinks;
         }
         else {
             console.error(`Unable to get ${triangleBusinessJournalUrl} news articles.`);
