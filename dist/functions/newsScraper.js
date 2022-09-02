@@ -22,6 +22,5 @@ export const newsScraper = async () => {
         triangleBusinessJournalLinks,
     };
     return createCampaign(articles);
-    return articles;
 };
 //# sourceMappingURL=newsScraper.js.map
