@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer'
 
-import { sortByDate } from '../helpers/dates.js'
+import { filterByDays, sortByDate } from '../helpers/dates.js'
 
 import type { Article } from '../types'
 
@@ -28,7 +28,7 @@ export const scraper = async (): Promise<Article[]> => {
         const link: string = `${baseUrl}${(await article.evaluate((el) => el.getAttribute('href')))}`
         const title: string = await article.$eval('.item__title', (el) => el.innerText)
 
-        let dateTime = '0'
+        let dateTime = null
 
         try {
           const dateText = await article.$eval('time', (el) => el.innerText)
@@ -45,10 +45,12 @@ export const scraper = async (): Promise<Article[]> => {
       })
 
       const links = await Promise.all(articlesPromises)
-      const sortedLinks = sortByDate(links)
-
       await browser.close()
-      return sortedLinks
+
+      const sortedLinks = sortByDate(links)
+      const currentLinks = filterByDays(sortedLinks, 2)
+
+      return currentLinks
     } else {
       console.error(`Unable to get ${triangleBusinessJournalUrl} news articles.`)
     }

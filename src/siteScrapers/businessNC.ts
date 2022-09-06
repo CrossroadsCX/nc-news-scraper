@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer'
 import _ from 'lodash'
 
-import { sortByDate } from '../helpers/dates.js'
+import { filterByDays, sortByDate } from '../helpers/dates.js'
 
 import type { Article } from '../types'
 
@@ -34,7 +34,7 @@ export const scraper = async (): Promise<Article[]> => {
         const link: string = await infoHandle?.$eval('a', (link) => link.getAttribute('href'))
         const title: string = await infoHandle?.$eval('a', (link) => link.innerText)
 
-        let dateTime = '0'
+        let dateTime = null
         try {
           const dateString = await article.$eval('time', (dateHandle) => dateHandle.getAttribute('datetime'))
 
@@ -48,10 +48,13 @@ export const scraper = async (): Promise<Article[]> => {
       })
 
       const links = await Promise.all(articlesPromises)
-      const filteredLinks = _.uniqBy(links.filter((link) => link?.link), 'link')
-
       await browser.close()
-      const sortedLinks = sortByDate(filteredLinks)
+
+
+      const filteredLinks = _.uniqBy(links.filter((link) => link?.link), 'link')
+      const latestLinks = await filterByDays(filteredLinks, 2)
+
+      const sortedLinks = sortByDate(latestLinks)
       return sortedLinks
     } else {
       console.error(`Unable to get ${businessNCUrl} news articles.`)
