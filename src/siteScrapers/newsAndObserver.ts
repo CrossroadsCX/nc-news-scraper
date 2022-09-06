@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer'
 
-import { sortByDate } from '../helpers/dates.js'
+import { filterByDays, sortByDate } from '../helpers/dates.js'
 
 import type { Article } from '../types'
 
@@ -43,7 +43,7 @@ export const scraper = async (): Promise<Article[]> => {
             const title: string = await article.$eval('h3 > a', (link) => link.innerText)
 
             // Grab the date information
-          let dateTime = '0'
+          let dateTime = null
             try {
               dateTime = await article.$eval('.time', (dateHandle) => dateHandle.getAttribute('datetime'))
             } catch (err) {
@@ -60,12 +60,12 @@ export const scraper = async (): Promise<Article[]> => {
       })
 
       const tagValues = await Promise.all(articlesPromises)
-      const filteredValues = tagValues.filter((tag): tag is Article => tag !== null)
-
       await browser.close()
 
+      const filteredValues = tagValues.filter((tag): tag is Article => tag !== null)
       const sortedLinks = sortByDate(filteredValues)
-      return sortedLinks
+      const currentLinks = filterByDays(sortedLinks, 2)
+      return currentLinks
     } else {
       console.error(`Unable to get ${newsObserverUrl} news articles`)
     }
