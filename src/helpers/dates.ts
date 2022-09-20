@@ -45,7 +45,13 @@ const articlesDayFilter = (articleDate: Date, currentDate: Date, days: number): 
  * @returns
  */
 export const filterByDays = async (articles: Article[], days = 2): Promise<Article[]> => {
-  const ETDate = await getEasternTime()
+  let ETDate = new Date()
+
+  try {
+    ETDate = await getEasternTime()
+  } catch (err) {
+    console.error(err)
+  }
 
   const filteredArticles = articles.filter((article) => {
     if (article.dateTime) {
