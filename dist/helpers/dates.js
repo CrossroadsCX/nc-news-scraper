@@ -8,7 +8,13 @@ const articlesDayFilter = (articleDate, currentDate, days) => {
     return false;
 };
 export const filterByDays = async (articles, days = 2) => {
-    const ETDate = await getEasternTime();
+    let ETDate = new Date();
+    try {
+        ETDate = await getEasternTime();
+    }
+    catch (err) {
+        console.error(err);
+    }
     const filteredArticles = articles.filter((article) => {
         if (article.dateTime) {
             const articleDate = new Date(parseInt(article.dateTime));
