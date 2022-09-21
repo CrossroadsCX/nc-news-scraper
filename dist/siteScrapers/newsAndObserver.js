@@ -22,7 +22,8 @@ export const scraper = async () => {
                     const title = await article.$eval('h3 > a', (link) => link.innerText);
                     let dateTime = null;
                     try {
-                        dateTime = await article.$eval('.time', (dateHandle) => dateHandle.getAttribute('datetime'));
+                        const dateTimeSeconds = await article.$eval('.time', (dateHandle) => dateHandle.getAttribute('datetime'));
+                        dateTime = dateTimeSeconds + '000';
                     }
                     catch (err) {
                         console.info('Unable to get dateTime for article', title);

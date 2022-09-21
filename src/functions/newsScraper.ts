@@ -28,5 +28,6 @@ export const newsScraper = async () => {
 
   return createCampaign(articles)
 
+  // console.log(articles)
   // return articles
 }

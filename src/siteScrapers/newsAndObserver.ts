@@ -38,19 +38,22 @@ export const scraper = async (): Promise<Article[]> => {
 
           // Only select the articles tagged as business
           // if (tag.toUpperCase() === 'BUSINESS') {
-            // Grab the title
-            const link: string = await article.$eval('h3 > a', (link) => link.getAttribute('href'))
-            const title: string = await article.$eval('h3 > a', (link) => link.innerText)
+          // Grab the title
+          const link: string = await article.$eval('h3 > a', (link) => link.getAttribute('href'))
+          const title: string = await article.$eval('h3 > a', (link) => link.innerText)
 
             // Grab the date information
           let dateTime = null
-            try {
-              dateTime = await article.$eval('.time', (dateHandle) => dateHandle.getAttribute('datetime'))
-            } catch (err) {
-              console.info('Unable to get dateTime for article', title)
-            }
+          try {
+            // News and Observer uses seconds instead of milliseconds
+            const dateTimeSeconds = await article.$eval('.time', (dateHandle) => dateHandle.getAttribute('datetime'))
+            // Pad the string to convert to milliseconds
+            dateTime = dateTimeSeconds + '000'
+          } catch (err) {
+            console.info('Unable to get dateTime for article', title)
+          }
 
-            return { id, title, link, dateTime }
+          return { id, title, link, dateTime }
           // }
 
           return null
