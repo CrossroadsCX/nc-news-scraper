@@ -19,7 +19,7 @@ export const scraper = async () => {
                 const title = await article.$eval('a > .details > h3', (el) => el.innerText);
                 const category = await article.$eval('a > .details > .category', (el) => el.innerText);
                 if (category.toUpperCase() === 'OPINION') {
-                    return { category, link, title };
+                    return { category, link, title, dateTime: null };
                 }
                 return null;
             });

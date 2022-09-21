@@ -478,6 +478,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/date-fns@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "@types/date-fns@npm:2.6.0"
+  dependencies:
+    date-fns: "*"
+  checksum: 6839db1d12d6586cd572e8aa77efc2ea88fd6566b7902641cf3efe2e22518aff067df2ba433539a275a3ab1169612b54d007ddcc2800d846be4f7e629cd7bfb3
+  languageName: node
+  linkType: hard
+
 "@types/emscripten@npm:^1.39.6":
   version: 1.39.6
   resolution: "@types/emscripten@npm:1.39.6"
@@ -1867,6 +1876,13 @@ __metadata:
   dependencies:
     assert-plus: ^1.0.0
   checksum: 3634c249570f7f34e3d34f866c93f866c5b417f0dd616275decae08147dcdf8fccfaa5947380ccfb0473998ea3a8057c0b4cd90c875740ee685d0624b2983598
+  languageName: node
+  linkType: hard
+
+"date-fns@npm:*, date-fns@npm:^2.29.2":
+  version: 2.29.2
+  resolution: "date-fns@npm:2.29.2"
+  checksum: 08bebcceb0a5dbadae4c55e6592b9d5c07dbd7833433c7e9a1d4a424300db32589b8b48e5979b32863c9b00a48d9bab6663e580c2a4f9f203d46cbf9113b5664
   languageName: node
   linkType: hard
 
@@ -4416,11 +4432,13 @@ __metadata:
     "@google-cloud/functions-framework": ^3.1.2
     "@google-cloud/secret-manager": ^4.0.0
     "@sendinblue/client": ^3.2.1
+    "@types/date-fns": ^2.6.0
     "@types/lodash": ^4.14.182
     "@types/node": ^18.0.0
     "@types/puppeteer": ^5.4.6
     "@yarnpkg/pnpify": ^4.0.0-rc.10
     axios: ^0.27.2
+    date-fns: ^2.29.2
     eslint: ^8.18.0
     eslint-config-airbnb-base: ^15.0.0
     eslint-import-resolver-node: ^0.3.6

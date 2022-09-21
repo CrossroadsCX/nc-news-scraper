@@ -27,4 +27,6 @@ export const newsScraper = async () => {
   }
 
   return createCampaign(articles)
+
+  // return articles
 }

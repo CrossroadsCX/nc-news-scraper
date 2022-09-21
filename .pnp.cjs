@@ -38,11 +38,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@google-cloud/functions-framework", "npm:3.1.2"],\
             ["@google-cloud/secret-manager", "npm:4.0.0"],\
             ["@sendinblue/client", "npm:3.2.1"],\
+            ["@types/date-fns", "npm:2.6.0"],\
             ["@types/lodash", "npm:4.14.182"],\
             ["@types/node", "npm:18.0.0"],\
             ["@types/puppeteer", "npm:5.4.6"],\
             ["@yarnpkg/pnpify", "npm:4.0.0-rc.10"],\
             ["axios", "npm:0.27.2"],\
+            ["date-fns", "npm:2.29.2"],\
             ["eslint", "npm:8.18.0"],\
             ["eslint-config-airbnb-base", "virtual:febef1d0d0156d2a17593f2aa22b25f2544f9ddb506e16e467d7498c2d1b089393bd310d9448197a99c919b3fac605a1def69f760a5d7853522e2dcfa777af6f#npm:15.0.0"],\
             ["eslint-import-resolver-node", "npm:0.3.6"],\
@@ -599,6 +601,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/connect", "npm:3.4.35"],\
             ["@types/node", "npm:18.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/date-fns", [\
+        ["npm:2.6.0", {\
+          "packageLocation": "./.yarn/cache/@types-date-fns-npm-2.6.0-516bcda282-6839db1d12.zip/node_modules/@types/date-fns/",\
+          "packageDependencies": [\
+            ["@types/date-fns", "npm:2.6.0"],\
+            ["date-fns", "npm:2.29.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -2272,6 +2284,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["dashdash", "npm:1.14.1"],\
             ["assert-plus", "npm:1.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["date-fns", [\
+        ["npm:2.29.2", {\
+          "packageLocation": "./.yarn/cache/date-fns-npm-2.29.2-da48c27e93-08bebcceb0.zip/node_modules/date-fns/",\
+          "packageDependencies": [\
+            ["date-fns", "npm:2.29.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5398,11 +5419,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@google-cloud/functions-framework", "npm:3.1.2"],\
             ["@google-cloud/secret-manager", "npm:4.0.0"],\
             ["@sendinblue/client", "npm:3.2.1"],\
+            ["@types/date-fns", "npm:2.6.0"],\
             ["@types/lodash", "npm:4.14.182"],\
             ["@types/node", "npm:18.0.0"],\
             ["@types/puppeteer", "npm:5.4.6"],\
             ["@yarnpkg/pnpify", "npm:4.0.0-rc.10"],\
             ["axios", "npm:0.27.2"],\
+            ["date-fns", "npm:2.29.2"],\
             ["eslint", "npm:8.18.0"],\
             ["eslint-config-airbnb-base", "virtual:febef1d0d0156d2a17593f2aa22b25f2544f9ddb506e16e467d7498c2d1b089393bd310d9448197a99c919b3fac605a1def69f760a5d7853522e2dcfa777af6f#npm:15.0.0"],\
             ["eslint-import-resolver-node", "npm:0.3.6"],\
